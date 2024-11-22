@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ropa de Hombre - Fashion Design</title>
+    <link rel="stylesheet" href="assets/css/stylesmujer.css">
+</head>
+<body>
+    <header>
+        <h1>Fashion Design</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="mujer.html">Mujer</a></li>
+                <li><a href="hombres.html">Hombre</a></li>
+                <li><a href="niños.html">Niños</a></li>
+            </ul>
+        </nav>
+
+        <!-- Opciones de iniciar sesión y carrito en la esquina superior derecha -->
+        <div class="header-right">
+            <a href="#" id="iniciarSesion" onclick="abrirModalSesion()">Iniciar sesión</a>
+            <a href="#" id="carritoIcon" onclick="abrirCarrito()">Carrito</a>
+        </div>
+    </header>
+
+    <!-- Modal de inicio de sesión -->
+    <div id="modalSesion" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModalSesion()">&times;</span>
+            <h2>Iniciar sesión</h2>
+            <form id="formSesion">
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" name="email" required>
+                <br><br>
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" required>
+                <br><br>
+                <button type="submit">Iniciar sesión</button>
+            </form>
+            <p><a href="crear-cuenta.html">¿No tienes cuenta? Crear cuenta</a></p> <!-- Enlace a la página de Crear Cuenta -->
+        </div>
+    </div>
+
+    <section id="productos">
+        <h2>Colección de Hombre</h2>
+        <div class="productos-container">
+            <div class="producto" onclick="mostrarDetalles('Camiseta Deportiva 1', '12345', '$20.00', 'xs, s, m, l, xl', 'blanco')">
+                <img src="assets/img/camisetahombres.webp" alt="Camiseta Deportiva 1">
+                <h3>Camiseta Deportiva 1</h3>
+            </div>
+            <div class="producto" onclick="mostrarDetalles('Camiseta Deportiva 2', '12346', '$25.00', 'xs, s, m, l, xl', 'negro')">
+                <img src="assets/img/camisetahombres.webp" alt="Camiseta Deportiva  2">
+                <h3>Camiseta Deportiva 2</h3>
+            </div>
+            <div class="producto" onclick="mostrarDetalles('Camiseta Deportiva 3', '12347', '$22.00', 'xs, s, m, l, xl', 'rojo')">
+                <img src="assets/img/camisetahombres.webp" alt="Camiseta Deportiva  3">
+                <h3>Camiseta Deportiva 3</h3>
+            </div>
+        </div>
+    </section>
+
+    <section id="opiniones-calificaciones">
+        <form id="form-opinion" onsubmit="guardarOpinion(event)">
+            <!-- Selección de Producto -->
+            <label for="producto">Selecciona un producto:</label>
+            <select id="producto" required>
+                <option value="" disabled selected>Elige un producto</option>
+                <option value="producto1">Producto 1</option>
+                <option value="producto2">Producto 2</option>
+                <option value="producto3">Producto 3</option>
+            </select>
+            <br><br>
+
+            <!-- Calificación -->
+            <label for="calificacion">Califica el producto:</label>
+            <select id="calificacion" required>
+                <option value="" disabled selected>Elige una calificación</option>
+                <option value="1">1 estrella</option>
+                <option value="2">2 estrellas</option>
+                <option value="3">3 estrellas</option>
+                <option value="4">4 estrellas</option>
+                <option value="5">5 estrellas</option>
+            </select>
+            <br><br>
+
+            <!-- Opinión -->
+            <label for="opinion">Deja tu opinión:</label>
+            <textarea id="opinion" placeholder="Escribe tu opinión aquí..." required></textarea>
+            <br><br>
+
+            <!-- Botón de Enviar -->
+            <button type="submit">Enviar Opinión</button>
+        </form>
+
+        <!-- Sección para mostrar opiniones -->
+        <div id="lista-opiniones">
+            <h2>Opiniones de Productos</h2>
+            <!-- Aquí se mostrarán las opiniones -->
+        </div>
+    <!-- Modal de detalle -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal()">&times;</span>
+            <h2 id="nombreProducto"></h2>
+            <p><strong>Código:</strong> <span id="codigoProducto"></span></p>
+            <p><strong>Precio:</strong> <span id="precioProducto"></span></p>
+            <p><strong>Tallas:</strong>
+                <select id="selectTalla">
+                    <option value="xs">XS</option>
+                    <option value="s">S</option>
+                    <option value="m">M</option>
+                    <option value="l">L</option>
+                    <option value="xl">XL</option>
+                </select>
+            </p>
+            <p><strong>Color:</strong> <span id="colorProducto"></span></p>
+            <button onclick="agregarAlCarrito()">Agregar al Carrito</button>
+        </div>
+    </div>
+
+    <!-- Sección del carrito -->
+    <div id="carrito" class="carrito">
+        <div class="carrito-content">
+            <span class="close-carrito" onclick="cerrarCarrito()">&times;</span>
+            <h2>Carrito de Compras</h2>
+            <div id="contenidoCarrito"></div>
+            <p id="totalCarrito">Total: $0.00</p>
+            <button onclick="finalizarCompra()">Finalizar Compra</button>
+        </div>
+    </div>
+    <!-- Sección de confirmación del pedido, inicialmente oculta -->
+    <section id="procesarPedido" style="display: none;">
+        <h2>Confirmar Pedido</h2>
+        <form id="formularioPedido" onsubmit="confirmarCompra(event)">
+            <label for="direccionEnvio">Dirección de Envío:</label>
+            <input type="text" id="direccionEnvio" name="direccionEnvio" required>
+            <br>
+    
+            <label for="metodoPago">Método de Pago:</label>
+            <select id="metodoPago" name="metodoPago">
+                <option value="tarjeta">Tarjeta de Crédito</option>
+                <option value="paypal">PayPal</option>
+                <option value="efectivo">Pago contra entrega</option>
+            </select>
+            <br>
+    
+            <button type="submit">Confirmar Compra</button>
+            
+        </form>
+    </section>
+    <footer>
+        <p>&copy; 2024 Fashion Design</p>
+    </footer>
+
+    <!-- Referencia al archivo de JavaScript -->
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

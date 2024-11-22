@@ -1,47 +1,94 @@
-:root {
-  --primary-color: #3498db;
-  --secondary-color: #2c3e50;
-  --background-color: #ecf0f1;
-  --text-color: #34495e;
-  --header-height: 60px;
-}
-
-body {
-  font-family: 'Roboto', sans-serif;
-  line-height: 1.6;
+/* Evita el desplazamiento en la página */
+html, body {
   margin: 0;
   padding: 0;
-  background-color: var(--background-color);
-  color: var(--text-color);
+  height: 100%;
+  overflow: hidden; /* Elimina las barras de desplazamiento */
+  font-family: Arial, sans-serif;
+
 }
 
-/* El resto del CSS permanece igual */
-
-/* Añadimos estilos para la paginación y el filtro */
-.pagination {
+/* Section Bienvenida */
+#bienvenida {
+  position: relative;
+  background-image: url('../img/Imagen1.webp'); /* Cambia el path de la imagen */
+  background-size: cover; /* Asegura que la imagen cubra toda la sección */
+  background-position: center center; /* Centra la imagen tanto vertical como horizontalmente */
+  height: 100vh; /* 100% de la altura de la ventana */
   display: flex;
-  justify-content: center;
-  margin-top: 1rem;
+  align-items: center; /* Centra el contenido verticalmente */
+  justify-content: center; /* Centra el contenido horizontalmente */
+  overflow: hidden; /* Evita que la imagen se desborde */
 }
 
-.pagination button {
-  margin: 0 0.25rem;
-  padding: 0.5rem 1rem;
-  background-color: var(--primary-color);
+
+/* Header y navegación */
+header {
+  background-color: #333;
   color: white;
-  border: none;
-  cursor: pointer;
+  padding: 10px;
+  text-align: center;
 }
 
-.pagination button.active {
-  background-color: var(--secondary-color);
+header h1 {
+  margin: 0;
 }
 
-.table-filter {
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+
+#bienvenida .overlay {
+  background-color: rgba(0, 0, 0, 0.5); /* Oscurece el fondo para mejorar la legibilidad */
+  color: white;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+#bienvenida h2 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+#bienvenida p {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+#bienvenida a {
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 0 10px;
+  padding: 10px 20px;
+  background-color: #333;
+  border-radius: 5px;
+}
+
+#bienvenida a:hover {
+  background-color: #555;
+}
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin-top: auto; /* Esto asegura que el footer se empuje al fondo de la página */
   width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  border: 1px solid var(--primary-color);
-  border-radius: 4px;
 }
-

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Cuenta - Fashion Design</title>
+    <link rel="stylesheet" href="assets/css/stylesmujer.css">
+</head>
+<body>
+    <header>
+        <h1>Fashion Design</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="mujer.html">Mujer</a></li>
+                <li><a href="hombres.html">Hombre</a></li>
+                <li><a href="niños.html">Niños</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="crearCuenta">
+        <h2>Crear Cuenta</h2>
+        <form id="formCrearCuenta"onsubmit="procesarFormulario(event)">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            <br><br>
+
+            <label for="emailCrear">Correo electrónico:</label>
+            <input type="email" id="emailCrear" name="emailCrear" required>
+            <br><br>
+
+            <label for="direccion">Dirección de Envío:</label>
+            <input type="text" id="direccion" name="direccion" required>
+            <br><br>
+            
+            <label for="passwordCrear">Contraseña:</label>
+            <input type="password" id="passwordCrear" name="passwordCrear" required>
+            <br><br>
+
+            <button type="submit">Crear Cuenta</button>
+        </form>
+
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Fashion Design</p>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
